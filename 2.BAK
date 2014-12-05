@@ -1,0 +1,37 @@
+predicates
+nondeterm item(integer, symbol, real, integer)
+nondeterm run
+nondeterm action(integer)
+nondeterm purchase(integer)
+
+clauses
+%item(id, name, price, quantity)
+item(1, bread, 1, 5).
+item(2, milk, 5, 20).
+item(3, cola, 2.5, 100).
+item(4, sweet, 0.5, 500).
+
+%purchase(Item_ID)
+purchase(X):-
+	
+%action(Choice)
+action(1):-
+	write("Enter 1 for Bread", nl),
+	write("Enter 2 for milk", nl),
+	write("Enter 3 for cola", nl),
+	write("Enter 4 for sweet", nl),
+	readInt(X),
+	purchase(X).
+
+%rule
+run:-
+	write("Items available: Bread, Milk, Cola, and Sweet",nl),
+	write("Press 1 for price", nl),
+	write("press 2 for #items", nl),
+	readInt(X),
+	action(X).
+	
+run.
+
+goal
+run.
