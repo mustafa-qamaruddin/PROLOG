@@ -1,0 +1,21 @@
+domains
+	ILIST = integer*
+	
+predicates
+	nondeterm twice(ILIST, ILIST)
+	nondeterm append_last(integer, ILIST, ILIST)
+	
+clauses
+	append_last(X, [], [X]).
+	append_last(X, [H|T], [H|R]):-
+		append_last(X, T, R).
+		
+	twice([], []).
+	twice([H|T], Out):-
+		append_last(H, Out, Out),
+		append_last(H, Out, Out),
+		twice(T, Out).
+		
+goal
+	twice([1,2,3,4,5,6], R).
+
